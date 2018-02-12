@@ -2,27 +2,34 @@
 <html>
   <head>
     <title>Carlton's Tic Tac Toe</title>
-    <h1> Carlton's Tic Tac Toe</h1>
+    <h1> Carlton's Tic Tac Toe </h1>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <script type="text/javascript" src="app.js"></script>
   </head>
   <body>
   	  <table>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="sq1" class="row1" value="" onclick="myFunction(this)"> </td>
+        <td id="sq2" class="row1" value="" onclick="myFunction(this)"></td>
+        <td id="sq3" class="row1" value="" onclick="myFunction(this)"></td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="sq4" class="row2" value="" onclick="myFunction(this)"></td>
+        <td id="sq5" class="row2" value="" onclick="myFunction(this)"></td>
+        <td id="sq6" class="row2" value="" onclick="myFunction(this)"></td>
     </tr>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td id="sq7" class="row3" value="" onclick="myFunction(this)"></td>
+        <td id="sq8" class="row3" value="" onclick="myFunction(this)"></td>
+        <td id="sq9" class="row3" value="" onclick="myFunction(this)"></td>
     </tr>
     </table>
+    <div>
+      <input type="text" name="XScore" value="0" size=2>X's Score </input>
+      <input type="text" name="XScore" value="0" size=2>O's Score </input>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+    <div class="wrapper">
+      <button class="button" type=button onclick="resetBoard()" value="Reset">Reset</button>
+    </div>
   </body>
 </html>
