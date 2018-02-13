@@ -26,16 +26,18 @@ var Yboard = [
   [0,0,0]
 ]
 
-var playerXCount = 0;
 var playerXChoices = [];
-var playerYChoices = [];
+var playerOChoices = [];
 var playerOCount = 0;
-var tieCount = 0;
+var playerXCount = 0;
 var numMoves = 0;
 var occupied = false;
+var count = 0;
 
 var winningCombos = [
 	[1,2,3],
+	[2,1,3],
+	[3,2,1],
 	[1,4,7],
 	[1,5,9],
 	[2,5,8],
@@ -46,32 +48,56 @@ var winningCombos = [
 	[7,8,9]
 ];
 
-var checkWinner = function(square) {
+var checkWinnerX = function(array) {
+  var numbersArr = array.map(Number)
+  console.log(numbersArr)
+  if (numbersArr.length >= 3) {
+    winningCombos.forEach(function(x) {
+  	  if(JSON.stringify(x) === JSON.stringify(numbersArr)) {
+  	  	
+  	  	alert('X Wins!')
+  	  }
+    })
+  }
+}
 
+var checkWinnerO = function(array) {
+  var numbersArr = array.map(Number)
+  console.log(numbersArr)
+  if (numbersArr.length >= 3) {
+    winningCombos.forEach(function(x) {
+  	  if(JSON.stringify(x) === JSON.stringify(numbersArr)) {
+  	  	alert('O Wins!')
+  	  }
+    })
+  }
 }
 
 var selectSquare = function(square) {
-	if (playerOCount >= 5) {
+	if (playerXCount === 5) {
 		alert("Sorry, this game is a TIE....Now hit refresh!")
 		setTimeout((function() {
 			resetBoard()
 		}), 500 )
-	}
-	if (square.value === true) {
+
+}
+	if (count % 2 === 1) {
+		count++
+		playerOCount++;
 		square.innerHTML = 'O'
     square.value = false;
     square.symbol = 'O'
-    console.log(square.id)
-    playerOCount++;
-    // console.log(square.value)
+    playerOChoices.push(square.id)
+    checkWinnerO(playerOChoices)
+    
 	} else {
+		count++;
+		playerXCount++;
 		square.innerHTML = 'X'
     square.value = true;
     square.symbol = 'X';
-    console.log(square.id)
     playerXChoices.push(square.id)
-    playerXCount++;
-    // console.log(playerXCount)
+    checkWinnerX(playerXChoices)
 	}
 }
 
@@ -87,7 +113,6 @@ var winnerX = function(square) {
 var resetBoard = function(square) {
 	squares.forEach(function(square) {
 		square.value = null;
-		// console.log(square.value)
 		square.innerHTML = ""
 	})
 }
