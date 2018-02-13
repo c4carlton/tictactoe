@@ -2,25 +2,37 @@
 //     document.getElementById("demo").innerHTML = "YOU CLICKED ME!";
 // }
 
-var s1 = document.getElementById('sq1')
-var s2 = document.getElementById('sq2')
-var s3 = document.getElementById('sq3')
-var s4 = document.getElementById('sq4')
-var s5 = document.getElementById('sq5')
-var s6 = document.getElementById('sq6')
-var s7 = document.getElementById('sq7')
-var s8 = document.getElementById('sq8')
-var s9 = document.getElementById('sq9')
+var s1 = document.getElementById('1')
+var s2 = document.getElementById('2')
+var s3 = document.getElementById('3')
+var s4 = document.getElementById('4')
+var s5 = document.getElementById('5')
+var s6 = document.getElementById('6')
+var s7 = document.getElementById('7')
+var s8 = document.getElementById('8')
+var s9 = document.getElementById('9')
 
 var squares = [s1,s2,s3,s4,s5,s6,s7,s8,s9]
 
+var Xboard = [
+  [0,0,0],
+  [0,0,0],
+  [0,0,0]
+]
+
+var Yboard = [
+  [0,0,0],
+  [0,0,0],
+  [0,0,0]
+]
+
 var playerXCount = 0;
+var playerXChoices = [];
+var playerYChoices = [];
 var playerOCount = 0;
 var tieCount = 0;
 var numMoves = 0;
 var occupied = false;
-
-
 
 var winningCombos = [
 	[1,2,3],
@@ -34,26 +46,42 @@ var winningCombos = [
 	[7,8,9]
 ];
 
+var checkWinner = function(square) {
+
+}
+
 var selectSquare = function(square) {
+	if (playerOCount >= 5) {
+		alert("Sorry, this game is a TIE....Now hit refresh!")
+		setTimeout((function() {
+			resetBoard()
+		}), 500 )
+	}
 	if (square.value === true) {
-		square.innerHTML = 'Y'
+		square.innerHTML = 'O'
     square.value = false;
-    square.symbol = 'Y'
-    console.log(square.value)
+    square.symbol = 'O'
+    console.log(square.id)
+    playerOCount++;
+    // console.log(square.value)
 	} else {
 		square.innerHTML = 'X'
     square.value = true;
     square.symbol = 'X';
-	  console.log(square.value)
+    console.log(square.id)
+    playerXChoices.push(square.id)
+    playerXCount++;
+    // console.log(playerXCount)
 	}
 }
 
 var winnerX = function(square) {
 	squares.forEach(function(x) {
 		x.value = 'X';
-		console.log(x.value)
 		x.innerHTML = "X"
 	})
+	setTimeout((function(){alert('Player X Wins!')
+  }), 200)
 }
 
 var resetBoard = function(square) {
