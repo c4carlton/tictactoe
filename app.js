@@ -14,18 +14,6 @@ var s9 = document.getElementById('9')
 
 var squares = [s1,s2,s3,s4,s5,s6,s7,s8,s9]
 
-var Xboard = [
-  [0,0,0],
-  [0,0,0],
-  [0,0,0]
-]
-
-var Yboard = [
-  [0,0,0],
-  [0,0,0],
-  [0,0,0]
-]
-
 var playerXChoices = [];
 var playerOChoices = [];
 var playerOCount = 0;
@@ -33,28 +21,46 @@ var playerXCount = 0;
 var numMoves = 0;
 var occupied = false;
 var count = 0;
+var winsX = 0;
+var winsO = 0;
 
 var winningCombos = [
 	[1,2,3],
 	[2,1,3],
 	[3,2,1],
+	[4,1,7],
 	[1,4,7],
+	[7,4,1],
 	[1,5,9],
+	[5,1,9],
+	[9,1,5],
 	[2,5,8],
+	[5,2,8],
+	[8,2,5],
 	[3,5,7],
+	[7,5,3],
+	[5,7,3],
 	[3,6,9],
+	[6,3,9],
+	[9,6,3],
 	[4,5,6],
+	[5,4,6],
+	[6,4,5],
 	[6,5,4],
 	[7,8,9]
 ];
+
+var xWins = function() {
+	winsX += 1;
+}
 
 var checkWinnerX = function(array) {
   var numbersArr = array.map(Number)
   console.log(numbersArr)
   if (numbersArr.length >= 3) {
     winningCombos.forEach(function(x) {
-  	  if(JSON.stringify(x) === JSON.stringify(numbersArr)) {
-  	  	
+  	  if(JSON.stringify(numbersArr).includes(x)) {
+  	  	xWins()
   	  	alert('X Wins!')
   	  }
     })
@@ -66,7 +72,8 @@ var checkWinnerO = function(array) {
   console.log(numbersArr)
   if (numbersArr.length >= 3) {
     winningCombos.forEach(function(x) {
-  	  if(JSON.stringify(x) === JSON.stringify(numbersArr)) {
+  	  if(JSON.stringify(numbersArr).includes(x)) {
+
   	  	alert('O Wins!')
   	  }
     })
@@ -74,11 +81,12 @@ var checkWinnerO = function(array) {
 }
 
 var selectSquare = function(square) {
-	if (playerXCount === 5) {
-		alert("Sorry, this game is a TIE....Now hit refresh!")
+	console.log(count)
+	if (count === 8) {
+		alert("Sorry, this game is a TIE...LAME")
 		setTimeout((function() {
 			resetBoard()
-		}), 500 )
+		}), 200 )
 
 }
 	if (count % 2 === 1) {
@@ -112,9 +120,16 @@ var winnerX = function(square) {
 
 var resetBoard = function(square) {
 	squares.forEach(function(square) {
+		count = 0;
 		square.value = null;
+		playerXChoices = [];
+		playerOChoices = [];
 		square.innerHTML = ""
 	})
+}
+
+var resetLife = function() {
+  location.reload();
 }
 
 

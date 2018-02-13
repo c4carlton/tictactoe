@@ -24,15 +24,18 @@
     </tr>
     </table>
     <div>
-      <input type="text" name="XScore" value="0" size=1>X's Win </input>
-      <input type="text" name="XScore" value="0" size=1>O's Win </input>
+      <input type="qty" name="XScore" value="0" size=1> X's Win </input>
+      <input type="qty" name="XScore" value="0" size=1> O's Win </input>
     </div>
     <script type="text/javascript" src="app.js"></script>
     <div class="wrapper">
-      <button class="button" type=button onclick="resetBoard()" value="Reset">Reset</button>
+      <button class="button" type=button onclick="resetBoard()" value="Reset Board">Reset Board</button>
+    </div>
+        <div class="wrapper">
+      <button class="button" type=button onclick="resetLife()" value="Reset Page">Reset Life</button>
     </div>
     <div class="wrapper">
-      <button class="button" type=button onclick="winnerX()" value="Reset">DOMINATION</button>
+      <button class="button" type=button onclick="winnerX()" value="Reset">Surprise</button>
     </div>
   </body>
 </html>
