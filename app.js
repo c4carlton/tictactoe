@@ -18,6 +18,8 @@ var playerXCount = 0;
 var playerOCount = 0;
 var tieCount = 0;
 var numMoves = 0;
+var occupied = false;
+
 
 
 var winningCombos = [
@@ -32,16 +34,33 @@ var winningCombos = [
 	[7,8,9]
 ];
 
+var selectSquare = function(square) {
+	if (square.value === true) {
+		square.innerHTML = 'Y'
+    square.value = false;
+    square.symbol = 'Y'
+    console.log(square.value)
+	} else {
+		square.innerHTML = 'X'
+    square.value = true;
+    square.symbol = 'X';
+	  console.log(square.value)
+	}
+}
 
-var myFunction = function(square) {
+var winnerX = function(square) {
 	squares.forEach(function(x) {
-		x.innerHTML = "x"
+		x.value = 'X';
+		console.log(x.value)
+		x.innerHTML = "X"
 	})
 }
 
-var resetBoard = function() {
-	squares.forEach(function(x) {
-		x.innerHTML = ""
+var resetBoard = function(square) {
+	squares.forEach(function(square) {
+		square.value = null;
+		// console.log(square.value)
+		square.innerHTML = ""
 	})
 }
 

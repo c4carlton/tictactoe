@@ -8,19 +8,19 @@
   <body>
   	  <table>
     <tr>
-        <td id="sq1" class="row1" value="" onclick="myFunction(this)"> </td>
-        <td id="sq2" class="row1" value="" onclick="myFunction(this)"></td>
-        <td id="sq3" class="row1" value="" onclick="myFunction(this)"></td>
+        <td id="sq1" class="row1" value="" onclick="selectSquare(this)"> </td>
+        <td id="sq2" class="row1" value="" onclick="selectSquare(this)"></td>
+        <td id="sq3" class="row1" value="" onclick="selectSquare(this)"></td>
     </tr>
     <tr>
-        <td id="sq4" class="row2" value="" onclick="myFunction(this)"></td>
-        <td id="sq5" class="row2" value="" onclick="myFunction(this)"></td>
-        <td id="sq6" class="row2" value="" onclick="myFunction(this)"></td>
+        <td id="sq4" class="row2" value="" onclick="selectSquare(this)"></td>
+        <td id="sq5" class="row2" value="" onclick="selectSquare(this)"></td>
+        <td id="sq6" class="row2" value="" onclick="selectSquare(this)"></td>
     </tr>
     <tr>
-        <td id="sq7" class="row3" value="" onclick="myFunction(this)"></td>
-        <td id="sq8" class="row3" value="" onclick="myFunction(this)"></td>
-        <td id="sq9" class="row3" value="" onclick="myFunction(this)"></td>
+        <td id="sq7" class="row3" value="" onclick="selectSquare(this)"></td>
+        <td id="sq8" class="row3" value="" onclick="selectSquare(this)"></td>
+        <td id="sq9" class="row3" value="" onclick="selectSquare(this)"></td>
     </tr>
     </table>
     <div>
@@ -30,6 +30,9 @@
     <script type="text/javascript" src="app.js"></script>
     <div class="wrapper">
       <button class="button" type=button onclick="resetBoard()" value="Reset">Reset</button>
+    </div>
+    <div class="wrapper">
+      <button class="button" type=button onclick="winnerX()" value="Reset">DOMINATION</button>
     </div>
   </body>
 </html>
